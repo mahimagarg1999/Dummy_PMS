@@ -1,0 +1,313 @@
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <!-- <div class="text-center mb-5"> -->
+        <div class="text-center mb-5">
+            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Register</h5>
+            <h1>Register User Here</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="contact-form bg-secondary rounded p-5">
+                    <div id="success"></div>
+                    <form class="row g-3" [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+                        <div class="control-group col-12">
+                            <input type="text" class="form-control border-0 p-4" id="name" placeholder="Your First Name"
+                                required="required" data-validation-required-message="Please enter your name"
+                                formControlName="fname" />
+                            <div *ngIf="submitted && fc.fname.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.fname.errors.required && !fc.fname.errors.fname">First name required.
+                                </div>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group col-12">
+                            <input type="text" class="form-control border-0 p-4" id="lname" placeholder="Your Last Name"
+                                required="required" data-validation-required-message="Please enter your last name"
+                                formControlName="lname" />
+                            <div *ngIf="submitted && fc.lname.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.lname.errors.required && !fc.lname.errors.fname">Last name required.
+                                </div>
+                            </div>
+
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control border-0 p-4" id="email" placeholder="Your Email"
+                                required="required" data-validation-required-message="Please enter your email"
+                                formControlName="email" />
+
+                            <div *ngIf="submitted && fc.email.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.email.errors.required && !fc.email.errors.email">Email is required</div>
+                                <div *ngIf="fc.email.errors.email">Email must be a valid email address</div>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <!-- <div class="control-group col-md-6">
+                            <input type="text" class="form-control border-0 p-4" id="role" placeholder="Your Role"
+                                required="required" data-validation-required-message="Please enter your Role"
+                                formControlName="role" />
+                            <div *ngIf="submitted && fc.role.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.role.errors.required && !fc.role.errors.fname">Last name required.
+                                </div>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div> -->
+
+                        <div class="control-group col-md-6">
+                            <input type="password" class="form-control border-0 p-4" id="password"
+                                placeholder="Your Password" required="required"
+                                data-validation-required-message="Please enter your Password"
+                                formControlName="password" />
+                            <div *ngIf="submitted && fc.password.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.password.errors.required && !fc.password.errors.fname">Password required.
+                                </div>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group col-6">
+                            <input type="date" class="form-control border-0 p-4" id="dob" placeholder="Your DOB"
+                                required="required" data-validation-required-message="Please enter your DOB"
+                                formControlName="dob" />
+                            <div *ngIf="submitted && fc.dob.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.dob.errors.required && !fc.dob.errors.fname">DOB required.
+                                </div>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group col-6">
+                            <input type="text" class="form-control border-0 p-4" id="standard"
+                                placeholder="Your Standard" required="required"
+                                data-validation-required-message="Please enter your Standard"
+                                formControlName="standard" />
+                            <div *ngIf="submitted && fc.standard.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.standard.errors.required && !fc.standard.errors.standard">Standard
+                                    required.
+                                </div>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group col-6">
+                            <input type="text" class="form-control border-0 p-4" id="gender" placeholder="Your Gender"
+                                required="required" data-validation-required-message="Please enter your gender"
+                                formControlName="gender" />
+                            <div *ngIf="submitted && fc.gender.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.gender.errors.required && !fc.gender.errors.gender">Gender is required.
+                                </div>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group col-12">
+                            <input type="text" class="form-control border-0 p-4" id="address"
+                                placeholder="Enter address" required="required"
+                                data-validation-required-message="Please enter your address"
+                                formControlName="address" />
+                            <div *ngIf="submitted && fc.address.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.address.errors.required && !fc.address.errors.gender">Address is
+                                    required.
+                                </div>
+                            </div>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group col-6">
+                            <input type="text" class="form-control border-0 p-4" id="city" placeholder="Your city"
+                                required="required" data-validation-required-message="Please enter your city"
+                                formControlName="city" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group col-6">
+                            <!-- <input type="text" class="form-control border-0 p-4" id="state" placeholder="Your city"
+                                            required="required" data-validation-required-message="Please enter your state"
+                                            formControlName="state" /> -->
+                            <select id="inputState" class="form-control form-select" formControlName="state"
+                                placeholder="Your state">
+                                <option selected>Choose...</option>
+                                <option value="MP">MP</option>
+                                <option value="UP">UP</option>
+                                <option></option>
+                            </select>
+                        </div>
+                        <p class="help-block text-danger"></p>
+
+
+                        <div class="text-center">
+                            <button class="btn btn-primary py-3 px-5" type="submit"
+                                id="sendMessageButton">Register</button>
+                            <br><br>
+
+                            <div class="text-center sign-up">
+                                Already have an account ? <a (click)="navigateToLogin()" style="color:black">Login</a>
+                                here.
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  -->
+<!-- Registration Start -->
+<!-- <app-topbar></app-topbar>
+<app-navbar></app-navbar>
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Register</h5>
+            <h1>Register User Here</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="contact-form bg-secondary rounded p-5">
+                    <div id="success"></div>
+                    <form>
+                        <div class="control-group col-12">
+                            <input type="text" class="form-control border-0 p-4" id="name" placeholder="Your First Name"
+                                required="required" data-validation-required-message="Please enter your name"
+                                formControlName="fname" />
+                            <div *ngIf="submitted && fc.fname.errors" class="validationErrorMsg">
+                                <div *ngIf="fc.fname.errors.required && !fc.fname.errors.fname">First name required.
+                                </div>
+                            </div>
+                        </div>
+                        <p class="help-block text-danger"></p>
+                </div>
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="control-group col-12">
+                <input type="text" class="form-control border-0 p-4" id="lname" placeholder="Your Last Name"
+                    required="required" data-validation-required-message="Please enter your last name"
+                    formControlName="lname" />
+                <div *ngIf="submitted && fc.lname.errors" class="validationErrorMsg">
+                    <div *ngIf="fc.lname.errors.required && !fc.lname.errors.fname">Last name required.
+                    </div>
+                </div>
+
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="control-group col-6">
+                <input type="email" class="form-control border-0 p-4" id="email" placeholder="Your Email"
+                    required="required" data-validation-required-message="Please enter your email"
+                    formControlName="email" />
+
+                <div *ngIf="submitted && fc.email.errors" class="validationErrorMsg">
+                    <div *ngIf="fc.email.errors.required && !fc.email.errors.email">Email is required</div>
+                    <div *ngIf="fc.email.errors.email">Email must be a valid email address</div>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="control-group col-6">
+                <input type="text" class="form-control border-0 p-4" id="role" placeholder="Your Role"
+                    required="required" data-validation-required-message="Please enter your Role"
+                    formControlName="role" />
+                <div *ngIf="submitted && fc.role.errors" class="validationErrorMsg">
+                    <div *ngIf="fc.role.errors.required && !fc.role.errors.fname">Last name required.
+                    </div>
+                </div>
+                <p class="help-block text-danger"></p>
+            </div>
+
+            <div class="control-group col-6">
+                <input type="password" class="form-control border-0 p-4" id="password" placeholder="Your Password"
+                    required="required" data-validation-required-message="Please enter your Password"
+                    formControlName="password" />
+                <div *ngIf="submitted && fc.password.errors" class="validationErrorMsg">
+                    <div *ngIf="fc.password.errors.required && !fc.password.errors.fname">Password required.
+                    </div>
+                </div>
+                <p class="help-block text-danger"></p>
+            </div>
+
+            <div class="control-group col-6">
+                <input type="text" class="form-control border-0 p-4" id="dob" placeholder="Your DOB" required="required"
+                    data-validation-required-message="Please enter your DOB" formControlName="dob" />
+                <div *ngIf="submitted && fc.dob.errors" class="validationErrorMsg">
+                    <div *ngIf="fc.dob.errors.required && !fc.dob.errors.fname">DOB required.
+                    </div>
+                </div>
+                <p class="help-block text-danger"></p>
+            </div>
+
+            <div class="control-group col-4">
+                <input type="text" class="form-control border-0 p-4" id="standard" placeholder="Your DOB"
+                    required="required" data-validation-required-message="Please enter your Standard"
+                    formControlName="standard" />
+                <div *ngIf="submitted && fc.standard.errors" class="validationErrorMsg">
+                    <div *ngIf="fc.standard.errors.required && !fc.standard.errors.standard">Standard
+                        required.
+                    </div>
+                </div>
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="control-group col-2">
+                <input type="text" class="form-control border-0 p-4" id="gender" placeholder="Your DOB"
+                    required="required" data-validation-required-message="Please enter your gender"
+                    formControlName="gender" />
+                <div *ngIf="submitted && fc.gender.errors" class="validationErrorMsg">
+                    <div *ngIf="fc.gender.errors.required && !fc.gender.errors.gender">Gender is required.
+                    </div>
+                </div>
+                <p class="help-block text-danger"></p>
+            </div>
+
+            <div class="control-group col-12">
+                <input type="text" class="form-control border-0 p-4" id="address" placeholder="1234 Main St"
+                    required="required" data-validation-required-message="Please enter your address"
+                    formControlName="address" />
+                <div *ngIf="submitted && fc.address.errors" class="validationErrorMsg">
+                    <div *ngIf="fc.address.errors.required && !fc.address.errors.gender">Address is
+                        required.
+                    </div>
+                </div>
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="control-group col-6">
+                <input type="text" class="form-control border-0 p-4" id="city" placeholder="Your city"
+                    required="required" data-validation-required-message="Please enter your city"
+                    formControlName="city" />
+                <p class="help-block text-danger"></p>
+            </div>
+
+            <div class="control-group col-4">
+               
+                <select id="inputState" class="form-select" formControlName="state">
+                    <option selected>Choose...</option>
+                    <option>MP</option>
+                    <option>UP</option>
+                    <option></option>
+                </select>
+            </div>
+            <p class="help-block text-danger"></p>
+       
+ 
+        </form>
+
+<app-footer></app-footer> -->

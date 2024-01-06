@@ -1,0 +1,100 @@
+
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+<body style="max-height: 500px; overflow-y: auto;">
+    <div class="container mt-3 pt-3">
+        <div class="col-12">
+            <h1 class="text-center fw-bolder">Update Users here</h1>
+        </div>
+
+        <form class="row g-3" [formGroup]="updateForm">
+            <!-- fname: this.fname,
+            lname: this.lname,
+            email: this.email,
+            password: this.password,
+             -->
+            <div class="col-md-6">
+                <label class="form-label">First name</label>
+                <input type="text" class="form-control" placeholder="Enter Theme Fname" [value]="f_name" name="fname"
+                    formControlName="fname">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Last name</label>
+                <input type="text" class="form-control" placeholder="Enter Theme Lname" [value]="l_name" name="lname"
+                    formControlName="lname">
+            </div>
+
+            <div class="col-12">
+                <label for="emailName" class="form-label">Email</label>
+                <input type="email" [value]="u_email" class="form-control" name="email" placeholder="Please enter email"
+                    formControlName="email" readonly>
+
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">password</label>
+                <input type="password" [value]="u_password" class="form-control" name="password"
+                    placeholder="Please Enter password" formControlName="password">
+            </div>
+
+            <!-- dob: this.dob,
+            gender: this.gender,
+            standard: this.standard,
+            address: this.address,
+             -->
+            <div class="col-md-6">
+                <label for="inputdob" class="form-label">DOB</label>
+                <input type="date" [value]="u_dob" class="form-control" name="dob" placeholder="Please Enter dob"
+                    formControlName="dob">
+
+            </div>
+
+
+            <div class="col-md-6">
+                <label for="inputGender" class="form-label">Gender</label>
+                <input type="text" [value]="u_gender" class="form-control" name="gender" placeholder="Please Enter gender"
+                    formControlName="gender">
+
+
+            </div>
+            <div class="col-md-6">
+                <label for="inputstandard" class="form-label">standard</label>
+                <input type="text" [value]="u_standard" class="form-control" name="standard" formControlName="standard">
+
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">address</label>
+                <input type="text" [value]="u_address" placeholder="Enter address" name="address" class="form-control"
+                    formControlName="address">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">city</label>
+                <input type="text" class="form-control" [value]="u_city" placeholder="Enter city" name="city"
+                    formControlName="city">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">state</label>
+                <input type="text" class="form-control" [value]="u_state" placeholder="Enter state" name="state"
+                    formControlName="state">
+            </div>
+            <!-- <div class="col-md-4">
+                <label>role</label>
+                <input type="text" [value]="u_role" placeholder="Enter role" name="role"
+                    formControlName="role">
+            </div>
+            <div class="col-md-4">
+                <label>status</label>
+                <input type="text" [value]="u_status" placeholder="Enter status" name="status"
+                    formControlName="status">
+            </div> -->
+            <div class="modal-footer">
+                <button type="button" class="modal-save-button btn-color-size extra"
+                    (click)="submitUpdateForm()">Update</button>
+                <button type="button" class="modal-go-back-button btn-color-size extra" (click)="goBack()">Go
+                    Back</button>
+                    {{editMsg}}
+
+            </div>
+
+        </form>
+    </div>
+    <app-footer></app-footer>

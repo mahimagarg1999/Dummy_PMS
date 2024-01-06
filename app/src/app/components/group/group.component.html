@@ -1,0 +1,74 @@
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+<div class="card col-md-8" *ngIf="!istoggle" style="margin-left:17%;border: 1px solid beige;margin-top: 3%;">
+  <div class="card-body">
+    <div>
+      <h4 class="card-title text-primary my-4 " style="display:inline">Manage Group</h4>
+      <button mat-raised-button color="primary" (click)="openAddDialog()" style="background-color: green; color: white; text-align:right;display:inline;margin-left: 65%;
+                margin-bottom: 2%;
+            ">Add Group---</button>
+
+    </div>
+    <!-- <button (click)="openDialogAdd()">Add</button> -->
+    <div class="d-flex justify-content-between align-items-center admin-header">
+
+      <br>
+      <table class="table table-bordered" mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="group_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> group_name </th>
+          <td mat-cell *matCellDef="let element">{{element?.group_name }} </td>
+        </ng-container>
+        <ng-container matColumnDef="group_member" style="color:red">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> group_member </th>
+          <td mat-cell *matCellDef="let element">{{element?.group_member }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let element">
+
+            <a class="pointer" (click)="openDialogUpdate(element)"><span><i class="fas fa-pencil-alt"
+                  style="color: blue;"></i></span></a>&nbsp;
+            <a class="pointer" (click)="deleteItem(element._id)" style="color: red;"><span><i class="fa fa-trash"
+                  title="Delete"></i></span></a>
+          </td>
+        </ng-container>
+        <br>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================== -->
+<form class="row g-3 col-md-6 " [formGroup]="updateGroupForm" *ngIf="istoggle"
+  style="margin-left:25%;border: 1px solid beige;margin-top: 3%;">
+
+  <div class="col-12">
+    <label class="form-label">group_name</label>
+    <input type="text" class="form-control" placeholder="Enter Theme group_name" name="group_name" [value]="groupName"
+      formControlName="group_name">
+  </div>
+
+  <div class="col-12">
+    <label class="form-label">group_member</label>
+
+    <mat-select class="input-form-class" panelClass="set-material-option" formControlName="group_member" multiple>
+
+      <mat-option *ngFor="let role of arrayGroupMember" [value]="role.group_member">{{role?.group_member}}</mat-option>
+    </mat-select>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="modal-save-button btn-color-size extra"
+      (click)="submitGroupUpdateForm()">Update</button>
+    <button type="button" class="modal-go-back-button btn-color-size extra" (click)="goBack()">Go Back</button>
+
+  </div>
+</form>
+<!-- ======================== -->
+<app-footer></app-footer>

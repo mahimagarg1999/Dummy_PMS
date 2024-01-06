@@ -1,0 +1,77 @@
+<body style="max-height: 500px; overflow-y: auto;">
+    <div class="container mt-3 pt-3">
+        <div class="col-12">
+            <h1 class="text-center fw-bolder">Add Group here</h1>
+        </div>
+
+        <form class="row g-3 col-md-6 " [formGroup]="addGroupForm"
+            style="margin-left:25%;border: 1px solid beige;margin-top: 3%;">
+            <div class="col-12">
+                <label class="form-label">group_name</label>
+                <input type="text" class="form-control" placeholder="Enter Theme group_name" name="group_name"
+                    formControlName="group_name">
+            </div>
+            <!-- <div class="form-item">
+                <label>Group Members</label>
+                <mat-select class="input-form-class" panelClass="set-material-option" formControlName="group_member"
+                    multiple>
+                    <mat-option *ngFor="let role of arrayData" [value]="role">{{role}}</mat-option>
+                </mat-select>
+            </div> -->
+            <div class="form-item">
+                <label>Group Members</label>
+
+                <mat-select class="input-form-class" panelClass="set-material-option" formControlName="group_member"
+                    multiple>
+
+                    <mat-option *ngFor="let role of arrayData" [value]="role">{{role}}</mat-option>
+                </mat-select>
+            </div>
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="modal-save-button btn-color-size extra"
+                    (click)="submitAddForm()">Add</button>
+                <button class="modal-go-back-button btn-color-size extra" (click)="goBack()">Cancel</button>
+
+            </div>
+        </form>
+    </div>
+
+
+<!-- <body style="max-height: 500px; overflow-y: auto;">
+    <div class="container mt-3 pt-3">
+        <div class="col-12">
+            <h1 class="text-center fw-bolder">Add Group here</h1>
+        </div>
+
+        <form class="row g-3 col-md-6 " [formGroup]="addGroupForm"
+            style="margin-left:25%;border: 1px solid beige;margin-top: 3%;">
+            <div class="col-12">
+                <label class="form-label">group_name</label>
+                <input type="text" class="form-control" placeholder="Enter Theme group_name" name="group_name"
+                    formControlName="group_name">
+            </div>
+
+
+            <div class="form-item">
+                <label>Group Members</label>
+                <mat-select class="input-form-class" panelClass="set-material-option" formControlName="group_member"
+                    multiple>
+                    <mat-option *ngFor="let role of arrayData" [value]="role">{{role}}</mat-option>
+                </mat-select>
+            </div>
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="modal-save-button btn-color-size extra"
+                    (click)="submitAddForm()">Add</button>
+                <button class="modal-go-back-button btn-color-size extra" (click)="goBack()">Cancel</button>
+
+            </div>
+        </form>
+    </div> -->

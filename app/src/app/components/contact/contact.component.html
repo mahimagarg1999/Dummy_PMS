@@ -1,0 +1,68 @@
+
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+<!-- <div >
+    <div class="text-left mb-4 " >
+        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;margin-left:45%">Contact</h5>
+        <h1 style="margin-left:38%">Welcome To Contact</h1>
+    </div>
+    <p style="text-align:center">Project Management System
+        Project Management System (PMS) is a software which manages all inputs needed to carry out and execute projects successfully. It’s usually a group of software systems and is also integrated at one place for collecting, analyzing and interpreting information associated with project.
+        
+        It is specifically used for project planning, designing, scheduling, resource allocation and decision-making. Project Management System or PMS has been created and modified by Advance Innovation Group after years of expertise in Project Management Consulting and understanding the key challenges for any organization managing projects.
+        
+        Why use the PMS
+        PMS could be a nice enabler for organizational Project Management Processes. Online management of all the project tasks being carried out is an organizational necessity today and our PMS has the capability of tracking the project at an activity level.</p>
+    <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+</div> -->
+ <!-- Header Start -->
+ <div class="container-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+            <h3 class="display-4 text-white text-uppercase">Contact</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Contact</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Contact</h5>
+            <h1>Contact For Any Query</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form bg-secondary rounded p-5">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="control-group">
+                            <input type="text" class="form-control border-0 p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control border-0 p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control border-0 p-4" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control border-0 py-3 px-4" rows="5" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

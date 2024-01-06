@@ -1,0 +1,154 @@
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+<div class="d-flex justify-content-between align-items-center admin-header">
+    <h4 class="card-title">Roles</h4>
+    <div>
+        <button type="button" class="btn btn-info btn-lg dialog_button" data-toggle="modal" data-target="#myModal">Open
+            Modal</button>
+    </div>
+</div>
+<div class="search-mat-table card-header" id="header">
+    <div class="input-header">
+        <i class="material-icons input-icons-search">search</i>
+        <input #input class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored"
+            id="search" placeholder="Search for filter" (keyup)="applyFilter($event)" type="text" aria-invalid="false"
+            aria-required="false">
+
+    </div>
+</div>
+<section class="table-container mat-elevation-z8" tabindex="0">
+
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="group_member">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Group Member </th>
+            <td mat-cell *matCellDef="let element">{{element?.group_member | titlecase}} </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let element">
+
+                <!-- <a class="pointer" (click)="openDialogUpdate(element._id)" style="color: blue;"><span><i
+                            class="fa fa-pencil-alt" title="Edit" data-toggle="modal" data-target="#updateModal" >edit</i></span></a> -->
+                <!-- <button type="button" class="btn btn-info btn-lg dialog_button" data-toggle="modal"
+                    data-target="#updateModal">
+                    Edit
+                </button> -->
+                <a class="pointer" (click)="openDialogUpdate(element._id)" style="color: blue;"><span><i
+                            class="fa fa-pencil-alt" title="Edit" data-toggle="modal"
+                            data-target="#updateModal"></i></span></a>&nbsp;&nbsp;
+
+                <a class="pointer" (click)="openDeleteDialog(element._id)" style="color: red;"><span><i
+                            class="fa fa-trash" title="Delete"></i></span></a>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</section>
+<mat-paginator class="mat-paginator-sticky mat-elevation-z8" [pageSizeOptions]="[10, 25,50, 100]"></mat-paginator>
+
+<app-footer></app-footer>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-basic-title">Add</h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <!-- <h4 class="modal-titl">Modal Header</h4> -->
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form [formGroup]="addForm">
+                        <div class="form-item">
+                            <input type="text" placeholder="Enter Group Member" formControlName="group_member">
+                            <div *ngIf="submittedAdd && fc['group_member'].errors">
+                                <div class="admin-error-div" *ngIf="fc['group_member'].errors['required']">Title is
+                                    required</div>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="modal-save-button btn-color-size extra"
+                            (click)="addSubmit()">Add</button>
+                        <!-- <button type="button" class="modal-cancel-button btn-color-size" (click)="close('close button')">Cancel</button> -->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- edit-icon -->
+<!-- <ng-template #updateModel let-close="close">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-basic-title">Update</h6>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form [formGroup]="updateForm">
+                        <div class="form-item">
+                            <input type="text" placeholder="Enter group_member" formControlName="group_member">
+
+                            <div *ngIf="submittedUpdate && fc1['group_member'].errors">
+                                <div class="admin-error-div" *ngIf="fc1['group_member'].errors['required']">group_member
+                                    is
+                                    required</div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="modal-save-button btn-color-size extra"
+                    (click)="submitUpdateForm()">Update</button>
+                <button type="button" class="modal-cancel-button btn-color-size"
+                    (click)="close('close button')">Cancel</button>
+            </div>
+        </ng-template> -->
+<div id="updateModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-basic-title">Update</h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <!-- <h4 class="modal-titl">Modal Header</h4> -->
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form [formGroup]="updateForm">
+                        <div class="form-item">
+                            <input type="text" placeholder="Enter group_member" formControlName="group_member"
+                                name="group_member" [value]="g_member">
+
+                            <div *ngIf="submittedUpdate && fc1['group_member'].errors">
+                                <div class="admin-error-div" *ngIf="fc1['group_member'].errors['required']">group_member
+                                    is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="modal-save-button btn-color-size extra"
+                                (click)="submitUpdateForm()">Update</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

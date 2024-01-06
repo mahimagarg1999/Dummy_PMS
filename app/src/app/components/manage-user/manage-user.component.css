@@ -1,0 +1,18 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.msgcolor{
+  color:green
+}
+
+.validationErrorMsg{
+  color:red
+}
+
+.image_test{
+  border-top-left-radius:60px;
+  border-top-right-radius:60px;
+  border-bottom-left-radius:60px;
+  border-bottom-right-radius:60px;
+  
+  }

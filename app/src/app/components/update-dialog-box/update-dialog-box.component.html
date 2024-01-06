@@ -1,0 +1,66 @@
+<body style="max-height: 500px; overflow-y: auto;">
+    <div class="container mt-3 pt-3">
+        <div class="col-12">
+            <h1 class="text-center fw-bolder">Update Users here</h1>
+        </div>
+
+        <form class="row g-3" [formGroup]="updateForm">
+
+            <div class="col-12">
+                <label class="form-label">project_name</label>
+                <input type="text" class="form-control"  placeholder="Enter Theme Title" [value]="pname" name="project_name"
+                    formControlName="project_name">
+            </div>
+
+             <div class="col-12">
+                <label for="inputName" class="form-label">Description</label>
+                <input type="text" [value]="desc" class="form-control"  name="description"
+                    placeholder="Please enter description" formControlName="description">
+
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Start Date</label>
+                <input type="date" [value]="start_dt | date:'yyyy-MM-dd'" class="form-control"  name="startDate"
+                    placeholder="Please Enter startDate" formControlName="startDate">
+
+
+            </div>
+            <div class="col-md-6">
+                <label for="inputPasswordend" class="form-label">End Date</label>
+                <input type="date" [value]="end_dt | date:'yyyy-MM-dd'" class="form-control"  name="endDate"
+                    placeholder="Please Enter endDate" formControlName="endDate">
+
+
+            </div>
+
+
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">project_manager</label>
+                <input type="text" [value]="pmanager" class="form-control" name="project_manager"
+                    placeholder="Please Enter project_manager name" formControlName="project_manager">
+
+
+            </div>
+            <div class="col-md-6">
+                <label for="inputDOB" class="form-label">team_members</label>
+                <input type="text" [value]="teamMembers" class="form-control" name="team_members"
+                    formControlName="team_members">
+
+            </div>
+            <div class="col-md-4">
+                <label>domain</label>
+                <input type="text" [value]="domain_data" placeholder="Enter domain"  name="domain" formControlName="domain">
+
+
+            </div> 
+            <div class="modal-footer">
+                <button type="button" class="modal-save-button btn-color-size extra"
+                    (click)="submitUpdateForm()">Update</button>
+                    <button type="button" class="modal-go-back-button btn-color-size extra" (click)="goBack()">Go Back</button>
+
+            </div>
+
+
+
+        </form>
+    </div>
